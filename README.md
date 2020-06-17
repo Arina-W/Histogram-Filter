@@ -3,4 +3,4 @@
 Applying my knowledge of C++ syntax by translating the Histogram Filter code from 
 Python to C++.
 
-Project 1 in Intro to SDCN.
+Project 2 in Intro to SDCN.
