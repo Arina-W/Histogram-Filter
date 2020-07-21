@@ -10,10 +10,10 @@ vector< vector <float> > initialize_beliefs(vector< vector <char> > grid) {
   
   	int rows = grid.size();
   	int cols = grid[0].size();
-    float area = rows * cols;
+   	float area = rows * cols;
   	float bpc = 1.0 / area;
   
-	vector< vector <float> > newGrid( rows, vector <float> (cols, bpc));
+vector< vector <float> > newGrid( rows, vector <float> (cols, bpc));
   
     vector <float> ro;
     for (int i = 0; i < rows; i++ ) {
@@ -26,15 +26,15 @@ vector< vector <float> > initialize_beliefs(vector< vector <char> > grid) {
 	return newGrid;
 }
 
-  vector< vector <float> > move(int dy, 
-                                int dx, 
-  				vector < vector <float> > beliefs,
-  				float blurring) 
+vector< vector <float> > move(int dy, 
+                              int dx, 
+  			      vector < vector <float> > beliefs,
+  			      float blurring) 
 {
       	int rows = beliefs.size();
   	int cols = beliefs[0].size();
     
-    vector < vector <float> > newGrid( rows, (vector <float> (cols, 0.0)));
+vector < vector <float> > newGrid( rows, (vector <float> (cols, 0.0)));
     
     int newi;
     int newj;
@@ -57,9 +57,10 @@ vector< vector <float> > sense(char color,
 	float p_hit,
 	float p_miss) 
 {
-  	vector< vector <float> > newGrid;
 
-  
+	
+vector< vector <float> > newGrid;
+
     int rows = grid.size();
   	int cols = grid[0].size();
   
