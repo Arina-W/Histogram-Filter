@@ -1,14 +1,8 @@
 /**
-	localizer.cpp
-
 	Purpose: implements a 2-dimensional histogram filter
 	for a robot living on a colored cyclical grid by 
 	correctly implementing the "initialize_beliefs", 
 	"sense", and "move" functions.
-
-	This file is incomplete! Your job is to make these
-	functions work. Feel free to look at localizer.py 
-	for working implementations which are written in python.
 */
 
 #include "localizer.h"
@@ -20,8 +14,6 @@
 using namespace std;
 
 /**
-	TODO - implement this function 
-    
     Initializes a grid of beliefs to a uniform distribution. 
 
     @param grid - a two dimensional grid map (vector of vectors 
@@ -31,8 +23,8 @@ using namespace std;
     	   g r g
     	   g g g
 		   
-		   would be a 3x3 world where every cell is green except 
-		   for the center, which is red.
+	would be a 3x3 world where every cell is green except 
+	for the center, which is red.
 
     @return - a normalized two dimensional grid of floats. For 
            a 2x2 grid, for example, this would be:
@@ -42,13 +34,13 @@ using namespace std;
 */
 vector< vector <float> > initialize_beliefs(vector< vector <char> > grid) {
   
-	// your code here
+
   	int rows = grid.size();
   	int cols = grid[0].size();
-    float area = rows * cols;
+   	float area = rows * cols;
   	float bpc = 1.0 / area;
   
-	vector< vector <float> > newGrid( rows, vector <float> (cols, bpc));
+vector< vector <float> > newGrid( rows, vector <float> (cols, bpc));
   
     vector <float> ro;
     for (int i = 0; i < rows; i++ ) {
@@ -61,8 +53,7 @@ vector< vector <float> > initialize_beliefs(vector< vector <char> > grid) {
 	return newGrid;
 }
 
-/**
-  TODO - implement this function     
+/**  
     Implements robot motion by updating beliefs based on the 
     intended dx and dy of the robot. 
 
@@ -99,13 +90,10 @@ vector< vector <float> > initialize_beliefs(vector< vector <char> > grid) {
 */
   vector< vector <float> > move(int dy, 
                                 int dx, 
-  								vector < vector <float> > beliefs,
-  								float blurring) 
+  				vector < vector <float> > beliefs,
+  				float blurring) 
 {
     
- 
-
-  // your code here
   	int rows = beliefs.size();
   	int cols = beliefs[0].size();
     
@@ -128,8 +116,6 @@ vector< vector <float> > initialize_beliefs(vector< vector <char> > grid) {
 
 
 /**
-	TODO - implement this function 
-    
     Implements robot sensing by updating beliefs based on the 
     color of a sensor measurement 
 
@@ -139,7 +125,7 @@ vector< vector <float> > initialize_beliefs(vector< vector <char> > grid) {
 		   (vector of vectors of chars) where each char represents a 
 		   color. For example:
 
-		   g g g
+	   g g g
     	   g r g
     	   g g g
 
@@ -156,7 +142,7 @@ vector< vector <float> > initialize_beliefs(vector< vector <char> > grid) {
     	   times MORE likely it is to have a correct "sense" than
     	   an incorrect one.
 
-   	@param p_miss - the RELATIVE probability that any "sense" is 
+    @param p_miss - the RELATIVE probability that any "sense" is 
     	   incorrect. The ratio of p_hit / p_miss indicates how many
     	   times MORE likely it is to have a correct "sense" than
     	   an incorrect one.
@@ -170,17 +156,17 @@ vector< vector <float> > sense(char color,
 	float p_hit,
 	float p_miss) 
 {
-  	vector< vector <float> > newGrid;
 
-	// your code here
+vector< vector <float> > newGrid;
   
     int rows = grid.size();
   	int cols = grid[0].size();
   
     float miss;
-  	float hit;
-  	vector< vector <float> > preGrid;
-  	vector <float> ro;
+    float hit;
+	
+vector< vector <float> > preGrid;
+vector <float> ro;
       for (int i = 0; i < rows; i++ ) {
         ro.clear();
     	for (int j = 0; j < cols; j++ ) {
@@ -196,8 +182,8 @@ vector< vector <float> > sense(char color,
          preGrid.push_back(ro);
         }
        
-    vector <float> sum;
-    float a;
+vector <float> sum;
+float a;
     for ( int i = 0; i < preGrid.size(); i++ ) {
     	a = accumulate(preGrid[i].begin(), preGrid[i].end(), 0);
         sum.push_back(a);
