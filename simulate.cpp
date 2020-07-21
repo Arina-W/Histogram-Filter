@@ -1,12 +1,7 @@
 /**
-	simulate.cpp
-
 	Purpose: implements a Simulation class which
 	simulates a robot living in a 2D world. Relies 
 	on localization code from localizer.py 
-
-	This file is incomplete! Your job is to make 
-	this code work. 
 */
 
 #include <algorithm>
@@ -55,12 +50,6 @@ vector <char> Simulation::get_colors() {
 	num_colors = colors.size();
 	return colors;
 }
-
-// /**
-// You can test your code by running this function. 
-
-// Do that by first compiling this file and then 
-// running the output.
 
 int main() {
 	
