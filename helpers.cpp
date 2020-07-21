@@ -3,11 +3,6 @@
 
 	Purpose: helper functions which are useful when
 	implementing a 2-dimensional histogram filter.
-
-	This file is incomplete! Your job is to make the
-	normalize and blur functions work. Feel free to 
-	look at helper.py for working implementations 
-	which are written in python.
 */
 
 #include <vector>
@@ -19,7 +14,6 @@
 // #include "debugging_helpers.cpp"
 using namespace std;
 /**
-	TODO - implement this function
     Normalizes a grid of numbers. 
     @param grid - a two dimensional grid (vector of vectors of floats)
 		   where each entry represents the unnormalized probability 
@@ -29,15 +23,14 @@ using namespace std;
 */
 vector< vector<float> > normalize(vector< vector <float> > grid) {
 	
-  
-  	// your code here
+
   	float total = 0;
   	int rows = grid.size();
   	int cols = grid[0].size();
   
     vector < vector <float> > newGrid = zeros(rows, cols);
   	
- 	 for (int i = 0; i < rows; i++) {
+ 	for (int i = 0; i < rows; i++) {
      	for (int j = 0; j < cols; j++) {
         	total += grid[i][j];
         }
@@ -51,8 +44,6 @@ return newGrid;
 }
 
 /**
-	TODO - implement this function.
-
     Blurs (and normalizes) a grid of probabilities by spreading 
     probability from each cell over a 3x3 "window" of cells. This 
     function assumes a cyclic world where probability "spills 
@@ -67,15 +58,15 @@ return newGrid;
 
     would look like this:
 	
-	0.01  0.02	0.01
-	0.02  0.88	0.02
+	0.01  0.02  0.01
+	0.02  0.88  0.02
 	0.01  0.02  0.01
 
     @param grid - a two dimensional grid (vector of vectors of floats)
 		   where each entry represents the unnormalized probability 
 		   associated with that grid cell.
 
-	@param blurring - a floating point number between 0.0 and 1.0 
+    @param blurring - a floating point number between 0.0 and 1.0 
 		   which represents how much probability from one cell 
 		   "spills over" to it's neighbors. If it's 0.0, then no
 		   blurring occurs. 
@@ -87,7 +78,6 @@ vector < vector <float> > blur(vector < vector < float> > grid, float blurring) 
 
 	//vector < vector <float> > newGrid;
 	
-	// your code here
   	int rows = grid.size();
   	int cols = grid[0].size();
   
@@ -96,14 +86,14 @@ vector < vector <float> > blur(vector < vector < float> > grid, float blurring) 
   	float adjacent = blurring / 6.0;
   
   	vector < vector <float> > window ={ { corner, adjacent,  corner },
-  								       { adjacent, center, adjacent },
-  									   { corner, adjacent, corner }};
+  					 { adjacent, center, adjacent },
+  					 { corner, adjacent, corner }};
   
   	vector < vector <float> > newGrid (rows, (vector <float> (cols, 0.0)));
-    float gridval;
+        float gridval;
 	float mult;
 	int newi;
-    int newj;
+        int newj;
     for (int i = 0; i < rows; i++ ) {
     	for (int j = 0; j < cols; j++ ) {
         		gridval = grid[i][j];
@@ -121,14 +111,6 @@ vector < vector <float> > blur(vector < vector < float> > grid, float blurring) 
 
 	return normalize(newGrid);
 }
-
-/** -----------------------------------------------
-#
-#
-#	You do not need to modify any code below here.
-#
-#
-# ------------------------------------------------- */
 
 
 /**
