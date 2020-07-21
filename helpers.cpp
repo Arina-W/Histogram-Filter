@@ -1,6 +1,4 @@
 /**
-	helpers.cpp
-
 	Purpose: helper functions which are useful when
 	implementing a 2-dimensional histogram filter.
 */
@@ -11,7 +9,7 @@
 #include <string>
 #include <fstream>
 #include "helpers.h"
-// #include "debugging_helpers.cpp"
+#include "debugging_helpers.cpp"
 using namespace std;
 /**
     Normalizes a grid of numbers. 
